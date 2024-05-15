@@ -15,7 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    $banner_links = config("links.banner_links");
+    $footer_links = config("links.footer_links");
+    $icons = config("links.social_icons");
+    $data = [
+        "banner_links" => $banner_links,
+        "footer_links" => $footer_links,
+        "icons" => $icons
+    ];
+    return view('home', $data);
 })->name('home');
 
 Route::resource('/comics', ComicController::class);

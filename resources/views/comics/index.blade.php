@@ -1,25 +1,29 @@
-<div class="container">
+@extends('layouts.app')
 
-    <div class="d-flex justify-content-between align-items-center">
-        <a class="btn btn-primary" href="{{ route('comics.create') }}"> Add new comic </a>
-    </div>
+@section('content')
+    <div class="container">
 
-    <div class="row">
-        <div class="col">
+        <div class="d-flex justify-content-between align-items-center">
+            <a class="btn btn-primary" href="{{ route('comics.create') }}"> Add new comic </a>
+        </div>
 
-            @forelse ($comics as $comic)
-                <a class="comic-link text-decoration-none" href="{{ route('comics.show', $comic) }}">
-                    <div class="comic">
-                        <img class="comic-image mb-2" src="{{ $comic->thumb }}" alt="">
-                        <div class="comic-title text-white text-uppercase">{{ $comic->series }}</div>
-                    </div>
-                </a>
+        <div class="row">
+            <div class="col">
 
-            @empty
+                @forelse ($comics as $comic)
+                    <a class="comic-link text-decoration-none" href="{{ route('comics.show', $comic) }}">
+                        <div class="comic">
+                            <img class="comic-image mb-2" src="{{ $comic->thumb }}" alt="">
+                            <div class="comic-title text-white text-uppercase">{{ $comic->series }}</div>
+                        </div>
+                    </a>
 
-                <p>No comics</p>
-            @endforelse
+                @empty
 
+                    <p>No comics</p>
+                @endforelse
+
+            </div>
         </div>
     </div>
-</div>
+@endsection
