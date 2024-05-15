@@ -1,1 +1,7 @@
+@use "./partials/variables";
+@use "./partials/header";
+@use "./partials/main";
+@use "./partials/comic";
+@use "./partials/footer";
+
 @import '~bootstrap/scss/bootstrap';

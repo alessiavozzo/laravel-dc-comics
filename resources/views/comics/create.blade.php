@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container">
-        <h3>Add comic</h3>
+        <h3 class="mt-3 text-center">Add comic</h3>
 
         {{-- vedo le route con php artisan route:list --}}
         {{-- recupero la route che risponde al metodo post nella lista, cioè pasta --}}
 
-        <form action="{{ route('comics.store') }}" method="post">
+        <form action="{{ route('comics.store') }}" method="post" class="pt-3 pb-5">
             @csrf
 
             <div class="mb-3">

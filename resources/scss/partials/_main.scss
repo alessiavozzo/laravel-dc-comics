@@ -1,0 +1,33 @@
+@use "./variables" as *;
+
+#jumbotron {
+    height: 400px;
+    overflow: hidden;
+
+    img {
+        object-fit: contain;
+        width: 100%;
+    }
+}
+
+.section-title {
+    margin-top: -1.5rem;
+}
+
+
+.comic-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    object-position: top;
+
+    &:hover {
+        box-shadow: 0 0 4px 1px white;
+    }
+}
+
+.product {
+    img {
+        height: 50px;
+    }
+}

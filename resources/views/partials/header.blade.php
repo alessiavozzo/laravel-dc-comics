@@ -30,7 +30,7 @@
 
             <!-- links list -->
             <a class="nav-link text-uppercase" href="#">Comic books</a>
-            <a class="nav-link text-uppercase {{ Route::current() === 'comics.index' ? 'active-link text-primary' : 'text-dark' }}"
+            <a class="nav-link text-uppercase {{ Route::currentRouteName() === 'comics.index' ? 'active-link text-primary' : 'text-dark' }}"
                 href="{{ route('comics.index') }}" aria-current="page">Comics</a>
             <a class="nav-link text-uppercase" href="#">Movies</a>
             <a class="nav-link text-uppercase" href="#">Tv</a>

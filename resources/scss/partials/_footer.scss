@@ -1,0 +1,25 @@
+@use "./variables" as *;
+
+footer {
+    .footer-top {
+        background-image: url("../img/footer-bg.jpg");
+        overflow: hidden;
+
+        .footer-link {
+            color: $text-light;
+        }
+
+        .footer-right {
+            position: relative;
+
+            img {
+                position: absolute;
+                margin-top: -7rem;
+            }
+        }
+    }
+
+    .footer-bottom {
+        background-color: $footer-bg;
+    }
+}

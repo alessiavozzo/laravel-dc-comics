@@ -13,7 +13,7 @@ class ComicController extends Controller
     public function index()
     {
         //dd(Comic::all());
-        $comics = Comic::all();
+        $comics = Comic::orderByDesc('id')->paginate(12);
         $banner_links = config("links.banner_links");
         $footer_links = config("links.footer_links");
         $icons = config("links.social_icons");
@@ -31,7 +31,15 @@ class ComicController extends Controller
      */
     public function create()
     {
-        return view('comics.create');
+        $banner_links = config("links.banner_links");
+        $footer_links = config("links.footer_links");
+        $icons = config("links.social_icons");
+        $data = [
+            "banner_links" => $banner_links,
+            "footer_links" => $footer_links,
+            "icons" => $icons
+        ];
+        return view('comics.create', $data);
     }
 
     /**
