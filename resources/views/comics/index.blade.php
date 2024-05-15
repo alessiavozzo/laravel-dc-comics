@@ -17,11 +17,11 @@
                             <th scope="col">ID</th>
                             <th scope="col">TITLE</th>
                             <th scope="col">IMAGE</th>
-                            <th scope="col">THUMB</th>
                             <th scope="col">PRICE</th>
                             <th scope="col">SERIES</th>
                             <th scope="col">SALE DATE</th>
                             <th scope="col">TYPE</th>
+                            <th scope="col">ACTIONS</th>
 
 
                         </tr>
@@ -30,8 +30,8 @@
                         @forelse ($comics as $comic)
                             <tr class="">
                                 <td scope="row">{{ $comic->id }}</td>
-                                <td><img width="80" src="{{ $comic->thumb }}" alt=""></td>
                                 <td>{{ $comic->title }}</td>
+                                <td><img width="80" src="{{ $comic->thumb }}" alt=""></td>
                                 <td>{{ $comic->price }}</td>
                                 <td>{{ $comic->series }}</td>
                                 <td>{{ $comic->sale_date }}</td>
