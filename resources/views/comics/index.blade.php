@@ -3,36 +3,57 @@
 @section('content')
     <section id="current-series" class="bg-dark">
         <div class="container">
-            <span
-                class="section-title text-uppercase text-white fw-bold d-inline-block text-center bg-primary p-2 mb-4">Current
-                series</span>
+
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <a class="btn btn-primary" href="{{ route('comics.create') }}"> Add new comic </a>
             </div>
 
-            {{-- row --}}
-            <div class="row row-cols-1 row-cols-sm-4 row-cols-lg-6 g-3">
 
 
-                @forelse ($comics as $comic)
-                    <div class="col">
-                        <a class="comic-link text-decoration-none" href="{{ route('comics.show', $comic) }}">
-                            <div class="comic">
-                                <img class="comic-image mb-2" src="{{ $comic->thumb }}" alt="">
-                                <div class="comic-title text-white text-uppercase">{{ $comic->series }}</div>
-                            </div>
-                        </a>
-                    </div>
-
-                @empty
-
-                    <div class="col">
-                        <p>No comics</p>
-                    </div>
-                @endforelse
+            <div class="table-responsive">
+                <table class="table table-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">TITLE</th>
+                            <th scope="col">IMAGE</th>
+                            <th scope="col">THUMB</th>
+                            <th scope="col">PRICE</th>
+                            <th scope="col">SERIES</th>
+                            <th scope="col">SALE DATE</th>
+                            <th scope="col">TYPE</th>
 
 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($comics as $comic)
+                            <tr class="">
+                                <td scope="row">{{ $comic->id }}</td>
+                                <td><img width="80" src="{{ $comic->thumb }}" alt=""></td>
+                                <td>{{ $comic->title }}</td>
+                                <td>{{ $comic->price }}</td>
+                                <td>{{ $comic->series }}</td>
+                                <td>{{ $comic->sale_date }}</td>
+                                <td>{{ $comic->type }}</td>
+                                <td>
+                                    <a href="{{ route('comics.show', $comic) }}">Edit/Delete</a>
+
+                                </td>
+
+                            </tr>
+                        @empty
+
+                            <tr class="">
+                                <td scope="row" colspan="7">Nothing to show</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
             </div>
+
+
+
             <div class="controls mt-3">
                 {{ $comics->links('pagination::bootstrap-5') }}
             </div>

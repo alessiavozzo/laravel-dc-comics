@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ComicController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Comic;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $comics = Comic::orderByDesc('id')->paginate(12);
     $banner_links = config("links.banner_links");
     $footer_links = config("links.footer_links");
     $icons = config("links.social_icons");
     $data = [
+        "comics" => $comics,
         "banner_links" => $banner_links,
         "footer_links" => $footer_links,
         "icons" => $icons
