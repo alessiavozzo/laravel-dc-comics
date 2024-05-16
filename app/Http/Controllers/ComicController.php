@@ -30,12 +30,10 @@ class ComicController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        $banner_links = config("links.banner_links");
+    {        
         $footer_links = config("links.footer_links");
         $icons = config("links.social_icons");
         $data = [
-            "banner_links" => $banner_links,
             "footer_links" => $footer_links,
             "icons" => $icons
         ];
@@ -47,9 +45,21 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+
+        //data validation
+        $val_data = $request->validate([
+            'title' => 'required|min:3|max:50',
+            'thumb' => 'required|min:10|max:255',
+            'description' => 'required|max:800',
+            'price' => 'required|max:10',
+            'series' => 'required|max:50',
+            'sale_date' => 'required|max:10',
+            'type' => 'required|max:25'
+        ]);
+        
         //dd($request->all());
-        $data = $request->all();
-        Comic::create($data);
+        //$data = $request->all();
+        Comic::create($val_data);
 
         return to_route('comics.index');
     }
@@ -76,7 +86,7 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        //
+        return view('comics.edit', compact('comic'));
     }
 
     /**

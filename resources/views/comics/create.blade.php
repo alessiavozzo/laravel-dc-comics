@@ -4,57 +4,76 @@
     <div class="container">
         <h3 class="mt-3 text-center">Add comic</h3>
 
-        {{-- vedo le route con php artisan route:list --}}
-        {{-- recupero la route che risponde al metodo post nella lista, cioè pasta --}}
-
         <form action="{{ route('comics.store') }}" method="post" class="pt-3 pb-5">
             @csrf
 
             <div class="mb-3">
                 <label for="title" class="form-label">Titolo</label>
-                <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId"
-                    placeholder="" />
+                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title"
+                    aria-describedby="helpId" placeholder="" value="{{ old('title') }}" required />
                 <small id="titleHelper" class="form-text text-muted">Scrivi il titolo del comic</small>
+                @error('title')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="thumb" class="form-label">Immagine</label>
-                <input type="text" class="form-control" name="thumb" id="thumb" aria-describedby="helpId"
-                    placeholder="" />
+                <input type="text" class="form-control @error('thumb') is-invalid @enderror" name="thumb"
+                    id="thumb" aria-describedby="helpId" placeholder="" value="{{ old('thumb') }}" required />
                 <small id="thumbHelper" class="form-text text-muted">Aggiungi il link all'immagine</small>
+                @error('thumb')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="price" class="form-label">Prezzo</label>
-                <input type="text" class="form-control" name="price" id="price" aria-describedby="helpId"
-                    placeholder="" />
+                <input type="text" class="form-control @error('price') is-invalid @enderror" name="price"
+                    id="price" aria-describedby="helpId" placeholder="" value="{{ old('price') }}" required />
                 <small id="priceHelper" class="form-text text-muted">Aggiungi il prezzo </small>
+                @error('price')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="series" class="form-label">Serie</label>
-                <input type="text" class="form-control" name="series" id="series" aria-describedby="helpId"
-                    placeholder="" />
+                <input type="text" class="form-control @error('series') is-invalid @enderror" name="series"
+                    id="series" aria-describedby="helpId" placeholder="" value="{{ old('series') }}" required />
                 <small id="seriesHelper" class="form-text text-muted">Scrivi la serie</small>
+                @error('series')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="sale_date" class="form-label">Data di vendita</label>
-                <input type="text" class="form-control" name="sale_date" id="sale_date" aria-describedby="helpId"
-                    placeholder="" />
+                <input type="text" class="form-control @error('sale_date') is-invalid @enderror" name="sale_date"
+                    id="sale_date" aria-describedby="helpId" placeholder="" value="{{ old('sale_date') }}" required />
                 <small id="sale_dateHelper" class="form-text text-muted">Scrivi la data di vendita</small>
+                @error('sale_date')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="type" class="form-label">Tipo</label>
-                <input type="text" class="form-control" name="type" id="type" aria-describedby="helpId"
-                    placeholder="" />
+                <input type="text" class="form-control @error('type') is-invalid @enderror" name="type" id="type"
+                    aria-describedby="helpId" placeholder="" value="{{ old('type') }}" required />
                 <small id="typeHelper" class="form-text text-muted">Scrivi il tipo di comic</small>
+                @error('type')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
-                <textarea class="form-control" name="description" id="description" rows="7"></textarea>
+                <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
+                    rows="7" required>{{ old('description') }}</textarea>
+                @error('description')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <button type="submit" class="btn btn-primary">
