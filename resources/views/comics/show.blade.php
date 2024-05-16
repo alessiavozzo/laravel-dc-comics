@@ -43,6 +43,12 @@
                             <span class="col-9">{{ $comic->sale_date }}</span>
                         </div>
                     </div>
+
+                    <div class="buttons">
+                        <a class="btn btn-primary" href="{{ route('comics.edit', $comic) }}">Modifica</a>
+                        @include('partials.modal-delete')
+
+                    </div>
                 </div>
             </div>
 

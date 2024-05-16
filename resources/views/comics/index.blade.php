@@ -42,52 +42,8 @@
                                     {{-- edit single comic --}}
                                     <a href="{{ route('comics.edit', $comic) }}">Modifica</a>
                                     {{-- delete single comic --}}
+                                    @include('partials.modal-delete')
 
-                                    <!-- Modal trigger button -->
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                        data-bs-target="#modalId-{{ $comic->id }}">
-                                        Elimina
-                                    </button>
-
-                                    <!-- Modal Body -->
-                                    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-                                    <div class="modal fade" id="modalId-{{ $comic->id }}" tabindex="-1"
-                                        data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
-                                        aria-labelledby="modalTitleId-{{ $comic->id }}" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md"
-                                            role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    {{-- title --}}
-                                                    <h5 class="modal-title" id="modalTitleId-{{ $comic->id }}">
-                                                        Stai eliminando {{ $comic->title }}
-                                                    </h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                {{-- body - longer msg --}}
-                                                <div class="modal-body">You are about to delete this record. There's no
-                                                    turning back. Do you want to proceed?</div>
-
-                                                {{-- buttons --}}
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">
-                                                        Annulla
-                                                    </button>
-
-                                                    <form action="{{ route('comics.destroy', $comic) }}" method="post">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger">
-                                                            Elimina
-                                                        </button>
-                                                    </form>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </td>
 
                             </tr>
