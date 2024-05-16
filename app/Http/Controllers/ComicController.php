@@ -56,7 +56,7 @@ class ComicController extends Controller
             'sale_date' => 'required|max:10',
             'type' => 'required|max:25'
         ]);
-        
+
         //dd($request->all());
         //$data = $request->all();
         Comic::create($val_data);
@@ -85,8 +85,15 @@ class ComicController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Comic $comic)
-    {
-        return view('comics.edit', compact('comic'));
+    {        
+        $footer_links = config("links.footer_links");
+        $icons = config("links.social_icons");
+        $data = [
+            "comic" => $comic,
+            "footer_links" => $footer_links,
+            "icons" => $icons
+        ];
+        return view('comics.edit', $data);
     }
 
     /**
@@ -94,7 +101,19 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        //
+        //data validation
+        $val_data = $request->validate([
+            'title' => 'required|min:3|max:50',
+            'thumb' => 'required|min:10|max:255',
+            'description' => 'required|max:800',
+            'price' => 'required|max:10',
+            'series' => 'required|max:50',
+            'sale_date' => 'required|max:10',
+            'type' => 'required|max:25'
+        ]);
+
+        $comic->update($val_data);
+        return to_route('comics.index');
     }
 
     /**
