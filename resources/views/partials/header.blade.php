@@ -29,7 +29,7 @@
             </a>
 
             <!-- links list -->
-            <a class="nav-link text-uppercase" href="#">Comic books</a>
+            <a class="nav-link text-uppercase" href="{{ route('comics.index') }}">Admin</a>
             <a class="nav-link text-uppercase" href="#" aria-current="page">Comics</a>
             <a class="nav-link text-uppercase" href="#">Movies</a>
             <a class="nav-link text-uppercase" href="#">Tv</a>

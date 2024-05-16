@@ -2,15 +2,15 @@
 
 @section('content')
     <section id="current-series" class="bg-dark">
-        <div class="container">
+        <div class="container py-4">
 
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <a class="btn btn-primary" href="{{ route('comics.create') }}"> Add new comic </a>
+            <div class="d-flex justify-content-end align-items-center mb-3">
+                <a class="btn btn-success" href="{{ route('comics.create') }}"> Add new comic </a>
             </div>
 
 
 
-            <div class="table-responsive">
+            <div class="table-responsive rounded">
                 <table class="table table-primary">
                     <thead>
                         <tr>
@@ -56,24 +56,6 @@
 
             <div class="controls mt-3">
                 {{ $comics->links('pagination::bootstrap-5') }}
-            </div>
-        </div>
-    </section>
-
-    <section id="buy-banner" class="bg-primary py-5">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-md-5 gx-4">
-
-                @foreach ($banner_links as $key => $link)
-                    <div class="col">
-                        <div class="product d-flex align-items-center gap-2">
-                            <img src="{{ Vite::asset('resources/img/' . $link['image']) }}" alt="">
-                            <div class="text text-uppercase text-white">{{ $link['text'] }}</div>
-                        </div>
-
-                    </div>
-                @endforeach
-
             </div>
         </div>
     </section>

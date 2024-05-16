@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
-@section('content')
-    @extends('layouts.app')
+
 
 @section('content')
+    @include('partials.jumbotron')
+
     <section id="current-series" class="bg-dark">
         <div class="container">
             <span
@@ -16,7 +17,7 @@
 
                 @forelse ($comics as $comic)
                     <div class="col">
-                        <a class="comic-link text-decoration-none" href="{{ route('comics.show', $comic) }}">
+                        <a class="comic-link text-decoration-none" href="#{{-- {{ route('comics.show', $comic) }} --}}">
                             <div class="comic">
                                 <img class="comic-image mb-2" src="{{ $comic->thumb }}" alt="">
                                 <div class="comic-title text-white text-uppercase">{{ $comic->series }}</div>
@@ -56,6 +57,4 @@
             </div>
         </div>
     </section>
-@endsection
-
 @endsection
