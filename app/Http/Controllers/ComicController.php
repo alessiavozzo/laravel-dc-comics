@@ -13,13 +13,11 @@ class ComicController extends Controller
     public function index()
     {
         //dd(Comic::all());
-        $comics = Comic::orderByDesc('id')->paginate(12);
-        $banner_links = config("links.banner_links");
+        $comics = Comic::orderByDesc('id')->paginate(8);        
         $footer_links = config("links.footer_links");
         $icons = config("links.social_icons");
         $data = [
             "comics" => $comics,
-            "banner_links" => $banner_links,
             "footer_links" => $footer_links,
             "icons" => $icons
         ];
@@ -50,11 +48,11 @@ class ComicController extends Controller
         $val_data = $request->validate([
             'title' => 'required|min:3|max:50',
             'thumb' => 'required|min:10|max:255',
-            'description' => 'required|max:800',
-            'price' => 'required|max:10',
-            'series' => 'required|max:50',
-            'sale_date' => 'required|max:10',
-            'type' => 'required|max:25'
+            'description' => 'nullable|max:800',
+            'price' => 'nullable|max:10',
+            'series' => 'nullable|max:50',
+            'sale_date' => 'nullable|max:10',
+            'type' => 'nullable|max:25'
         ]);
 
         //dd($request->all());
@@ -68,13 +66,11 @@ class ComicController extends Controller
      * Display the specified resource.
      */
     public function show(Comic $comic)
-    {
-        $banner_links = config("links.banner_links");
+    {        
         $footer_links = config("links.footer_links");
         $icons = config("links.social_icons");
         $data = [
             "comic" => $comic,
-            "banner_links" => $banner_links,
             "footer_links" => $footer_links,
             "icons" => $icons
         ];
@@ -105,11 +101,11 @@ class ComicController extends Controller
         $val_data = $request->validate([
             'title' => 'required|min:3|max:50',
             'thumb' => 'required|min:10|max:255',
-            'description' => 'required|max:800',
-            'price' => 'required|max:10',
-            'series' => 'required|max:50',
-            'sale_date' => 'required|max:10',
-            'type' => 'required|max:25'
+            'description' => 'nullable|max:800',
+            'price' => 'nullable|max:10',
+            'series' => 'nullable|max:50',
+            'sale_date' => 'nullable|max:10',
+            'type' => 'nullable|max:25'
         ]);
 
         $comic->update($val_data);
