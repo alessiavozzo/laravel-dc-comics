@@ -46,6 +46,11 @@
 
                     <div class="buttons">
                         <a class="btn btn-primary" href="{{ route('comics.edit', $comic) }}">Modifica</a>
+                        <!-- Modal trigger button -->
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#modalId-{{ $comic->id }}">
+                            Elimina
+                        </button>
                         @include('partials.modal-delete')
 
                     </div>

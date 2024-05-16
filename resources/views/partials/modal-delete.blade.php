@@ -1,8 +1,3 @@
-<!-- Modal trigger button -->
-<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalId-{{ $comic->id }}">
-    Elimina
-</button>
-
 <!-- Modal Body -->
 <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
 <div class="modal fade" id="modalId-{{ $comic->id }}" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
